@@ -1,0 +1,34 @@
+mode: erm
+
+environment:
+  accelerate_config: accelerate_config/single_gpu.yaml
+
+
+rng_seeds: 
+  - 0 
+  - 1 
+  - 2 
+  - 3
+
+model:
+  main:
+    model: debertav3
+    size: base
+
+data:
+  main:
+    task_name: hsd
+    train_dataset_name: cad
+
+optim:
+  main: 
+    max_train_steps: 1620
+    learning_rate: 2e-5
+
+log: 
+  main: 
+    eval_interval: 180
+    use_wandb: true
+    project_name: replicate_erm
+    save_at_epochs: null
+    save_at_steps: null

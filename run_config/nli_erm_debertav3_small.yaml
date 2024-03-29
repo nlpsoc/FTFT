@@ -1,0 +1,34 @@
+mode: erm
+
+environment:
+  accelerate_config: accelerate_config/single_gpu.yaml
+
+
+rng_seeds: 
+  - 0 
+  - 1 
+  - 2 
+  - 3
+
+model:
+  main:
+    model: debertav3
+    size: small
+
+data:
+  main:
+    task_name: nli
+    train_dataset_name: mnli
+
+optim:
+  main: 
+    max_train_steps: 49088
+    learning_rate: 2e-5
+
+log: 
+  main: 
+    eval_interval: 4090
+    use_wandb: true
+    project_name: replicate_erm
+    save_at_epochs: null
+    save_at_steps: null
